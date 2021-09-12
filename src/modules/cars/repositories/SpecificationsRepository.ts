@@ -1,43 +1,31 @@
-import { Specification } from '../model/Specification';
+import { getRepository, Repository } from 'typeorm';
+import { Specification } from '../entities/Specification';
 import {
-  ICreateSpecificationDTO,
   ISpecificationsRepository,
+  ICreateSpecificationDTO,
 } from './implementations/ISpecificationsRepository';
 
 export class SpecificationsRepository implements ISpecificationsRepository {
-  private specifications: Specification[];
-
-  private static INSTANCE: SpecificationsRepository;
+  private ormRepository: Repository<Specification>;
 
   constructor() {
-    this.specifications = [];
+    this.ormRepository = getRepository(Specification);
   }
 
-  public static getInstance(): SpecificationsRepository {
-    if (!SpecificationsRepository.INSTANCE) {
-      SpecificationsRepository.INSTANCE = new SpecificationsRepository();
-    }
-    return SpecificationsRepository.INSTANCE;
+  async create({ name, description }: ICreateSpecificationDTO): Promise<void> {
+    const specification = this.ormRepository.create({ name, description });
+    await this.ormRepository.save(specification);
   }
 
-  create({ name, description }: ICreateSpecificationDTO): Specification {
-    const specification = new Specification();
-
-    Object.assign(specification, { name, description, created_at: new Date() });
-
-    this.specifications.push(specification);
-    return specification;
+  async list(): Promise<Specification[]> {
+    const specifications = await this.ormRepository.find();
+    return specifications;
   }
 
-  list(): Specification[] {
-    return this.specifications;
-  }
-
-  findByName(name: string): Specification {
-    const checkSpecificationIfExists = this.specifications.find(
-      specification => specification.name === name,
-    );
-
+  async findByName(name: string): Promise<Specification> {
+    const checkSpecificationIfExists = await this.ormRepository.findOne({
+      name,
+    });
     return checkSpecificationIfExists;
   }
 }

@@ -89,10 +89,10 @@
             "multipart/form-data": {
               "schema": {
                 "type": "object",
-                "format": "csv",
                 "properties": {
                   "file": {
-                    "type": "file"
+                    "type": "string",
+                    "format": "binary"
                   }
                 }
               }
