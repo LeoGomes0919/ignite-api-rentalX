@@ -2,6 +2,7 @@ import { inject, injectable } from 'tsyringe';
 import { hash } from 'bcryptjs';
 import { ICreateUserDTO } from '../dtos/ICreateUserDTO';
 import { IUsersRepository } from '../repositories/implementations/IUsersRepository';
+import { AppError } from '../../../shared/errors/AppError';
 
 @injectable()
 export class CreateUserService {
@@ -23,11 +24,11 @@ export class CreateUserService {
       await this.usersRepository.findByDriverLicense(driver_license);
 
     if (userEmailAlreadyExists) {
-      throw new Error('Email address already exists');
+      throw new AppError('Email address already exists');
     }
 
     if (userDriverLicenseAlreadyExists) {
-      throw new Error('Driver License already exists');
+      throw new AppError('Driver License already exists');
     }
 
     const passwordHashed = await hash(password, 8);
