@@ -3,6 +3,7 @@ import { compare } from 'bcryptjs';
 import { sign } from 'jsonwebtoken';
 import { IUsersRepository } from '../repositories/implementations/IUsersRepository';
 import { AppError } from '../../../shared/errors/AppError';
+import authConfig from '../../../config/auth';
 
 interface IRequest {
   email: string;
@@ -35,9 +36,10 @@ export class AuthenticateUserService {
       throw new AppError('Email or Password incorrect', 401);
     }
 
-    const token = sign({}, 'a51234097eb0dea133e4738fcf69f9ed', {
+    const { secret, expiresIn } = authConfig.jwt;
+    const token = sign({}, secret, {
       subject: user.id,
-      expiresIn: '1d',
+      expiresIn,
     });
 
     const tokenReturn: IResponse = {
