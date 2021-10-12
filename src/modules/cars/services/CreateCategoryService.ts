@@ -1,5 +1,5 @@
 import { inject, injectable } from 'tsyringe';
-import { AppError } from '../../../shared/errors/AppError';
+import { AppError } from '@shared/errors/AppError';
 import { ICategoriesRepository } from '../repositories/implementations/ICategoriesRepository';
 
 interface IRequest {

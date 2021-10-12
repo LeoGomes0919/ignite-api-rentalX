@@ -3,12 +3,12 @@ import express, { Request, Response, NextFunction } from 'express';
 import 'express-async-errors';
 import swaggerUi from 'swagger-ui-express';
 
+import { AppError } from '@shared/errors/AppError';
 import swaggerFile from '../../../swagger.json';
 import { routes } from './routes/index.routes';
 
 import '../typeorm';
-import '../../container';
-import { AppError } from '../../errors/AppError';
+import '@shared/container';
 
 const app = express();
 app.use(express.json());

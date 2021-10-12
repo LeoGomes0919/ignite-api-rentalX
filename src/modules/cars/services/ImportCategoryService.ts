@@ -1,6 +1,5 @@
 import fs from 'fs';
 import csvParse from 'csv-parse';
-// import { CategoriesRepository } from '../repositories/CategoriesRepository';
 import { inject, injectable } from 'tsyringe';
 import { ICategoriesRepository } from '../repositories/implementations/ICategoriesRepository';
 

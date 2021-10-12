@@ -1,6 +1,6 @@
 import { Request, Response } from 'express';
 import { container } from 'tsyringe';
-import { CreateUserService } from '../../../services/CreateUserService';
+import { CreateUserService } from '@modules/accounts/services/CreateUserService';
 
 export class CreateUsersControllers {
   async handle(req: Request, res: Response): Promise<Response> {

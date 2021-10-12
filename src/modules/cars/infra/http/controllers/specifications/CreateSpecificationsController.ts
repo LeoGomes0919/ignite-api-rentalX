@@ -1,6 +1,6 @@
 import { Request, Response } from 'express';
 import { container } from 'tsyringe';
-import { CreateSpecificationService } from '../../../../services/CreateSpecificationService';
+import { CreateSpecificationService } from '@modules/cars/services/CreateSpecificationService';
 
 export class CreateSpecificationsController {
   async handle(req: Request, res: Response): Promise<Response> {

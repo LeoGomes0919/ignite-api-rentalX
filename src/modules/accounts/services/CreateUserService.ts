@@ -1,8 +1,9 @@
+import 'reflect-metadata';
 import { inject, injectable } from 'tsyringe';
 import { hash } from 'bcryptjs';
+import { AppError } from '@shared/errors/AppError';
 import { ICreateUserDTO } from '../dtos/ICreateUserDTO';
 import { IUsersRepository } from '../repositories/implementations/IUsersRepository';
-import { AppError } from '../../../shared/errors/AppError';
 
 @injectable()
 export class CreateUserService {
