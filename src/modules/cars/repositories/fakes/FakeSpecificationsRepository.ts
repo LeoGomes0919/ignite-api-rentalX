@@ -1,5 +1,5 @@
 import { ICreateSpecificationDTO } from '../../dtos/ICreateSpecificationDTO';
-import { Specification } from '../../entities/Specification';
+import { Specification } from '../../infra/typeorm/entities/Specification';
 import { ISpecificationsRepository } from '../implementations/ISpecificationsRepository';
 
 export class FakeSpecificationsRepository implements ISpecificationsRepository {

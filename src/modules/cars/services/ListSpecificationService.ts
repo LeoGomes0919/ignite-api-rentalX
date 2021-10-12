@@ -1,6 +1,6 @@
 import { inject, injectable } from 'tsyringe';
-import { Specification } from '../entities/Specification';
-import { ISpecificationsRepository } from '../repositories/implementations/ISpecificationsRepository';
+import { Specification } from '../infra/typeorm/entities/Specification';
+import { ISpecificationsRepository } from '../repositories/ISpecificationsRepository';
 
 @injectable()
 export class ListSpecificationService {

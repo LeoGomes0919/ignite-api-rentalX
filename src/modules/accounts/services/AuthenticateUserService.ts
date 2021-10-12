@@ -3,7 +3,7 @@ import { compare } from 'bcryptjs';
 import { sign } from 'jsonwebtoken';
 import { AppError } from '@shared/errors/AppError';
 import authConfig from '@config/auth';
-import { IUsersRepository } from '../repositories/implementations/IUsersRepository';
+import { IUsersRepository } from '../repositories/IUsersRepository';
 
 interface IRequest {
   email: string;
