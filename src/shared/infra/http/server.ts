@@ -7,9 +7,10 @@ import { AppError } from '@shared/errors/AppError';
 import swaggerFile from '../../../swagger.json';
 import { routes } from './routes/index.routes';
 
-import '../typeorm';
+import createConnection from '../typeorm';
 import '@shared/container';
 
+createConnection();
 const app = express();
 app.use(express.json());
 

@@ -1,6 +1,6 @@
 import { ICreateSpecificationDTO } from '../../dtos/ICreateSpecificationDTO';
 import { Specification } from '../../infra/typeorm/entities/Specification';
-import { ISpecificationsRepository } from '../implementations/ISpecificationsRepository';
+import { ISpecificationsRepository } from '../ISpecificationsRepository';
 
 export class FakeSpecificationsRepository implements ISpecificationsRepository {
   private specifications: Specification[] = [];
