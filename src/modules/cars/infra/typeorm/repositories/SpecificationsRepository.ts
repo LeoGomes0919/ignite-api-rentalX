@@ -1,6 +1,6 @@
 import { getRepository, Repository } from 'typeorm';
 import { ICreateSpecificationDTO } from '@modules/cars/dtos/ICreateSpecificationDTO';
-import { ISpecificationsRepository } from '@modules/cars/repositories/implementations/ISpecificationsRepository';
+import { ISpecificationsRepository } from '@modules/cars/repositories/ISpecificationsRepository';
 import { Specification } from '../entities/Specification';
 
 export class SpecificationsRepository implements ISpecificationsRepository {
@@ -10,9 +10,13 @@ export class SpecificationsRepository implements ISpecificationsRepository {
     this.ormRepository = getRepository(Specification);
   }
 
-  async create({ name, description }: ICreateSpecificationDTO): Promise<void> {
+  async create({
+    name,
+    description,
+  }: ICreateSpecificationDTO): Promise<Specification> {
     const specification = this.ormRepository.create({ name, description });
     await this.ormRepository.save(specification);
+    return specification;
   }
 
   async list(): Promise<Specification[]> {
@@ -25,5 +29,10 @@ export class SpecificationsRepository implements ISpecificationsRepository {
       name,
     });
     return checkSpecificationIfExists;
+  }
+
+  async findByIds(ids: string[]): Promise<Specification[]> {
+    const allSpecifications = await this.ormRepository.findByIds(ids);
+    return allSpecifications;
   }
 }

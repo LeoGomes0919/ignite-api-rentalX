@@ -18,7 +18,7 @@ export class UpdateUserAvatarService {
     const user = await this.usersRepository.findById(user_id);
 
     if (user.avatar) {
-      await deleteFile(user.avatar);
+      await deleteFile('avatar', user.avatar);
     }
     user.avatar = avatar_file;
 

@@ -1,9 +1,11 @@
 import fs from 'fs';
-import path from 'path';
-import upload from '../config/upload';
+import { resolve } from 'path';
 
-export const deleteFile = async (filename: string): Promise<void> => {
-  const filePath = path.resolve(upload.tempFolder, filename);
+export const deleteFile = async (
+  folder: string,
+  filename: string,
+): Promise<void> => {
+  const filePath = resolve(__dirname, '..', '..', `tmp/${folder}`, filename);
 
   try {
     await fs.promises.stat(filePath);

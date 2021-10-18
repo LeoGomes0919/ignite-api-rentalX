@@ -19,6 +19,7 @@ export class FakeCarsRepository implements ICarsRepository {
   }
 
   async create({
+    id,
     name,
     description,
     license_plate,
@@ -30,6 +31,7 @@ export class FakeCarsRepository implements ICarsRepository {
     const car = new Car();
 
     Object.assign(car, {
+      id,
       name,
       description,
       license_plate,
@@ -60,5 +62,10 @@ export class FakeCarsRepository implements ICarsRepository {
       return [];
     });
     return cars;
+  }
+
+  async findById(car_id: string): Promise<Car> {
+    const findCar = this.cars.find(car => car.id === car_id);
+    return findCar;
   }
 }
