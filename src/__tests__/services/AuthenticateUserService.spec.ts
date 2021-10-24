@@ -1,8 +1,8 @@
-import { AppError } from '../shared/errors/AppError';
-import { CreateUserService } from '../modules/accounts/services/CreateUserService';
-import { FakeUsersRepository } from '../modules/accounts/repositories/fakes/FakeUsersRepository';
-import { AuthenticateUserService } from '../modules/accounts/services/AuthenticateUserService';
-import { ICreateUserDTO } from '../modules/accounts/dtos/ICreateUserDTO';
+import { AppError } from '../../shared/errors/AppError';
+import { CreateUserService } from '../../modules/accounts/services/CreateUserService';
+import { FakeUsersRepository } from '../../modules/accounts/repositories/fakes/FakeUsersRepository';
+import { AuthenticateUserService } from '../../modules/accounts/services/AuthenticateUserService';
+import { ICreateUserDTO } from '../../modules/accounts/dtos/ICreateUserDTO';
 
 let fakeUsersRepository: FakeUsersRepository;
 let createUserService: CreateUserService;

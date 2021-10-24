@@ -1,6 +1,6 @@
-import { AppError } from '../shared/errors/AppError';
-import { FakeCategoriesRepository } from '../modules/cars/repositories/fakes/FakeCategoriesRepository';
-import { CreateCategoryService } from '../modules/cars/services/CreateCategoryService';
+import { AppError } from '@shared/errors/AppError';
+import { FakeCategoriesRepository } from '@modules/cars/repositories/fakes/FakeCategoriesRepository';
+import { CreateCategoryService } from '@modules/cars/services/CreateCategoryService';
 
 let createCategoryService: CreateCategoryService;
 let fakeCategoriesRepository: FakeCategoriesRepository;

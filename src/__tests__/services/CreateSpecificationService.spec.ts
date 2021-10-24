@@ -1,6 +1,6 @@
-import { FakeSpecificationsRepository } from '../modules/cars/repositories/fakes/FakeSpecificationsRepository';
-import { CreateSpecificationService } from '../modules/cars/services/CreateSpecificationService';
-import { AppError } from '../shared/errors/AppError';
+import { FakeSpecificationsRepository } from '@modules/cars/repositories/fakes/FakeSpecificationsRepository';
+import { CreateSpecificationService } from '@modules/cars/services/CreateSpecificationService';
+import { AppError } from '@shared/errors/AppError';
 
 let createSpecificationService: CreateSpecificationService;
 let fakeSpecificationsRepository: FakeSpecificationsRepository;
