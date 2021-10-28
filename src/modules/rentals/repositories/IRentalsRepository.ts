@@ -8,6 +8,8 @@ export interface IRentalsRepository {
     expected_return_date,
     rent_amount,
   }: ICreateRentalDTO): Promise<Rental>;
+  findById(id: string): Promise<Rental>;
   findByCarRental(car_id: string): Promise<Rental>;
   findByUserRental(user_id: string): Promise<Rental>;
+  rentalsByUser(user_id: string): Promise<Rental[]>;
 }

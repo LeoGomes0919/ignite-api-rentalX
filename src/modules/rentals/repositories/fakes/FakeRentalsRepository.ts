@@ -10,6 +10,9 @@ export class FakeRentalsRepository implements IRentalsRepository {
     user_id,
     expected_return_date,
     rent_amount,
+    id,
+    end_date,
+    late_fee,
   }: ICreateRentalDTO): Promise<Rental> {
     const rental = new Rental();
 
@@ -19,6 +22,9 @@ export class FakeRentalsRepository implements IRentalsRepository {
       expected_return_date,
       start_date: new Date(),
       rent_amount,
+      id,
+      end_date,
+      late_fee,
     });
 
     this.rentals.push(rental);
@@ -35,5 +41,9 @@ export class FakeRentalsRepository implements IRentalsRepository {
     return this.rentals.find(
       rental => rental.user_id === user_id && !rental.end_date,
     );
+  }
+
+  async findById(id: string): Promise<Rental> {
+    return this.rentals.find(rental => rental.id === id);
   }
 }

@@ -78,4 +78,14 @@ export class CarsRepository implements ICarsRepository {
     });
     return checkLicensePlatIfExist;
   }
+
+  async updateAvailable(id: string, available: boolean): Promise<void> {
+    await this.ormRepository
+      .createQueryBuilder()
+      .update()
+      .set({ available })
+      .where('id = :id')
+      .setParameters({ id })
+      .execute();
+  }
 }

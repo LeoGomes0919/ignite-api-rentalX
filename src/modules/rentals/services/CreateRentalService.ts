@@ -3,6 +3,7 @@ import dayjs from 'dayjs';
 import utc from 'dayjs/plugin/utc';
 import { AppError } from '@shared/errors/AppError';
 import { IDateProvider } from '@shared/container/providers/DateProvider/IDateProvider';
+import { ICarsRepository } from '@modules/cars/repositories/ICarsRepository';
 import { ICreateRentalDTO } from '../dtos/ICreateRentalDTO';
 import { Rental } from '../infra/typeorm/entities/Rental';
 import { IRentalsRepository } from '../repositories/IRentalsRepository';
@@ -16,6 +17,8 @@ export class CreateRentalService {
     private rentalsRepository: IRentalsRepository,
     @inject('DateProvider')
     private dateProvider: IDateProvider,
+    @inject('CarsRepository')
+    private carsRepository: ICarsRepository,
   ) {}
 
   async execute({
@@ -58,6 +61,7 @@ export class CreateRentalService {
       expected_return_date,
       rent_amount,
     });
+    await this.carsRepository.updateAvailable(car_id, false);
 
     return rental;
   }

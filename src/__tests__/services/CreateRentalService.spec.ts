@@ -1,3 +1,4 @@
+import { FakeCarsRepository } from '@modules/cars/repositories/fakes/FakeCarsRepository';
 import { FakeRentalsRepository } from '@modules/rentals/repositories/fakes/FakeRentalsRepository';
 import { CreateRentalService } from '@modules/rentals/services/CreateRentalService';
 import { DayjsDateProvider } from '@shared/container/providers/DateProvider/implementations/DayjsDateProvider';
@@ -7,15 +8,18 @@ import dayjs from 'dayjs';
 let createRentalService: CreateRentalService;
 let fakeRentalsRepository: FakeRentalsRepository;
 let dayjsDateProvider: DayjsDateProvider;
+let fakeCarsRepositoy: FakeCarsRepository;
 
 describe('Create Rental', () => {
   const dayAdd24Hours = dayjs().add(1, 'day').toDate();
   beforeEach(() => {
     fakeRentalsRepository = new FakeRentalsRepository();
+    fakeCarsRepositoy = new FakeCarsRepository();
     dayjsDateProvider = new DayjsDateProvider();
     createRentalService = new CreateRentalService(
       fakeRentalsRepository,
       dayjsDateProvider,
+      fakeCarsRepositoy,
     );
   });
 

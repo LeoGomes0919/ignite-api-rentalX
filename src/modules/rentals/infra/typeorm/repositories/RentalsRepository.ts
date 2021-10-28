@@ -15,12 +15,20 @@ export class RentalsRepository implements IRentalsRepository {
     user_id,
     expected_return_date,
     rent_amount,
+    id,
+    end_date,
+    late_fee,
+    total,
   }: ICreateRentalDTO): Promise<Rental> {
     const rental = this.ormRepository.create({
       car_id,
       user_id,
       expected_return_date,
       rent_amount,
+      id,
+      end_date,
+      late_fee,
+      total,
     });
     await this.ormRepository.save(rental);
     return rental;
@@ -44,5 +52,18 @@ export class RentalsRepository implements IRentalsRepository {
       },
     });
     return userRental;
+  }
+
+  async findById(id: string): Promise<Rental> {
+    const rental = await this.ormRepository.findOne(id);
+    return rental;
+  }
+
+  async rentalsByUser(user_id: string): Promise<Rental[]> {
+    const rentals = await this.ormRepository.find({
+      where: { user_id },
+      relations: ['car'],
+    });
+    return rentals;
   }
 }
