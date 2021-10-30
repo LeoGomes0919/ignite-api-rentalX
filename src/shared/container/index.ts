@@ -18,6 +18,9 @@ import { UsersRepository } from '@modules/accounts/infra/typeorm/repositories/Us
 import { IRentalsRepository } from '@modules/rentals/repositories/IRentalsRepository';
 import { RentalsRepository } from '@modules/rentals/infra/typeorm/repositories/RentalsRepository';
 
+import { IUsersTokensRepository } from '@modules/accounts/repositories/IUsersTokensRepository';
+import { UsersTokensRepository } from '@modules/accounts/infra/typeorm/repositories/UsersTokensRepository';
+
 import { IDateProvider } from './providers/DateProvider/IDateProvider';
 import { DayjsDateProvider } from './providers/DateProvider/implementations/DayjsDateProvider';
 
@@ -40,6 +43,11 @@ container.registerSingleton<ICarsImagesRepository>(
 container.registerSingleton<IUsersRepository>(
   'UsersRepository',
   UsersRepository,
+);
+
+container.registerSingleton<IUsersTokensRepository>(
+  'UsersTokensRepository',
+  UsersTokensRepository,
 );
 
 container.registerSingleton<IRentalsRepository>(

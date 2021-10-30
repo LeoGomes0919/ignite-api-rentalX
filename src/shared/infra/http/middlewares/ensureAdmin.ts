@@ -8,6 +8,7 @@ export async function ensureAdmin(
   next: NextFunction,
 ): Promise<void> {
   const { id } = req.user;
+
   const usersRepository = new UsersRepository();
   const user = await usersRepository.findById(id);
 
