@@ -1,5 +1,5 @@
 Arguments: 
-  C:\Program Files\nodejs\node.exe C:\Users\leona\AppData\Roaming\npm\node_modules\yarn\bin\yarn.js add @types/nodemailer
+  C:\Program Files\nodejs\node.exe C:\Users\leona\AppData\Roaming\npm\node_modules\yarn\bin\yarn.js add handlebars
 
 PATH: 
   C:\Program Files\PowerShell\7;C:\Python39\Scripts\;C:\Python39\;C:\Program Files (x86)\Common Files\Oracle\Java\javapath;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;C:\WINDOWS\System32\OpenSSH\;C:\Program Files\Java\jre1.8.0_301\bin;C:\Program Files\Java\jdk1.8.0_202\bin;C:\Program Files\nodejs\;C:\ProgramData\chocolatey\bin;C:\Android\platform-tools;C:\Program Files\Git\cmd;C:\flutter\bin;C:\php7.4.24;C:\ProgramData\ComposerSetup\bin;C:\Program Files\PowerShell\7\;C:\Program Files\Docker\Docker\resources\bin;C:\ProgramData\DockerDesktop\version-bin;C:\Program Files\MySQL\MySQL Shell 8.0\bin\;C:\Users\leona\AppData\Local\Microsoft\WindowsApps;C:\Users\leona\AppData\Roaming\npm;C:\Users\leona\AppData\Local\Programs\Microsoft VS Code\bin;C:\Users\leona\AppData\Roaming\Composer\vendor\bin
@@ -29,6 +29,7 @@ npm manifest:
       "seed:admin": "ts-node-dev src/shared/infra/typeorm/seed/admin.ts"
     },
     "dependencies": {
+      "@types/nodemailer": "^6.4.4",
       "@types/supertest": "^2.0.11",
       "bcryptjs": "^2.4.3",
       "csv-parse": "^4.16.3",
@@ -37,6 +38,7 @@ npm manifest:
       "express-async-errors": "^3.1.1",
       "jsonwebtoken": "^8.5.1",
       "multer": "^1.4.3",
+      "nodemailer": "^6.7.0",
       "pg": "^8.7.1",
       "reflect-metadata": "^0.1.13",
       "supertest": "^6.1.6",
@@ -794,6 +796,13 @@ Lockfile:
     version "16.7.12"
     resolved "https://registry.yarnpkg.com/@types/node/-/node-16.7.12.tgz#4e30f80bfa9983fbc3b55875c0522da0303f4e95"
     integrity sha512-IrhrusVM9QJAn1xLFFqbZH+XCI8L6eZoVHjR4sZeGTBBvjQSuchXGgKpown1jP75TCMSndcbudYBDTekOhcIZA==
+  
+  "@types/nodemailer@^6.4.4":
+    version "6.4.4"
+    resolved "https://registry.yarnpkg.com/@types/nodemailer/-/nodemailer-6.4.4.tgz#c265f7e7a51df587597b3a49a023acaf0c741f4b"
+    integrity sha512-Ksw4t7iliXeYGvIQcSIgWQ5BLuC/mljIEbjf615svhZL10PE9t+ei8O9gDaD3FPCasUJn9KTLwz2JFJyiiyuqw==
+    dependencies:
+      "@types/node" "*"
   
   "@types/prettier@^2.1.5":
     version "2.4.1"
@@ -3542,6 +3551,11 @@ Lockfile:
     version "1.1.77"
     resolved "https://registry.yarnpkg.com/node-releases/-/node-releases-1.1.77.tgz#50b0cfede855dd374e7585bf228ff34e57c1c32e"
     integrity sha512-rB1DUFUNAN4Gn9keO2K1efO35IDK7yKHCdCaIMvFO7yUYmmZYeDjnGKle26G4rwj+LKRQpjyUUvMkPglwGCYNQ==
+  
+  nodemailer@^6.7.0:
+    version "6.7.0"
+    resolved "https://registry.yarnpkg.com/nodemailer/-/nodemailer-6.7.0.tgz#86614722c4e0c33d1b5b02aecb90d6d629932b0d"
+    integrity sha512-AtiTVUFHLiiDnMQ43zi0YgkzHOEWUkhDgPlBXrsDzJiJvB29Alo4OKxHQ0ugF3gRqRQIneCLtZU3yiUo7pItZw==
   
   normalize-package-data@^2.3.2:
     version "2.5.0"

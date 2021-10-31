@@ -10,6 +10,11 @@ export class UsersTokensRepository implements IUsersTokensRepository {
     this.ormRepository = getRepository(UserToken);
   }
 
+  async fidByRefreshToken(refresh_token: string): Promise<UserToken> {
+    const userToken = await this.ormRepository.findOne({ refresh_token });
+    return userToken;
+  }
+
   async deleteById(id: string): Promise<void> {
     await this.ormRepository.delete(id);
   }

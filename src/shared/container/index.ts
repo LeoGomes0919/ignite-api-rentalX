@@ -23,6 +23,8 @@ import { UsersTokensRepository } from '@modules/accounts/infra/typeorm/repositor
 
 import { IDateProvider } from './providers/DateProvider/IDateProvider';
 import { DayjsDateProvider } from './providers/DateProvider/implementations/DayjsDateProvider';
+import { IMailProvider } from './providers/MailProvider/IMailProvider';
+import { EtherealMailProvider } from './providers/MailProvider/implementations/EtherealMailProvider';
 
 container.registerSingleton<ICategoriesRepository>(
   'CategoriesRepository',
@@ -35,6 +37,7 @@ container.registerSingleton<ISpecificationsRepository>(
 );
 
 container.registerSingleton<ICarsRepository>('CarsRepository', CarsRepository);
+
 container.registerSingleton<ICarsImagesRepository>(
   'CarsImagesRepositoy',
   CarsImagesRepository,
@@ -56,3 +59,8 @@ container.registerSingleton<IRentalsRepository>(
 );
 
 container.registerSingleton<IDateProvider>('DateProvider', DayjsDateProvider);
+
+container.registerInstance<IMailProvider>(
+  'EtherealMailProvider',
+  new EtherealMailProvider(),
+);
