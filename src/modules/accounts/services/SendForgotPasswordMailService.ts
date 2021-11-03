@@ -20,8 +20,8 @@ export class SendForgotPasswordMailService {
     private usersTokensRepository: IUsersTokensRepository,
     @inject('DateProvider')
     private dateProvider: IDateProvider,
-    @inject('EtherealMailProvider')
-    private etherealMailProvider: IMailProvider,
+    @inject('MailProvider')
+    private mailProvider: IMailProvider,
   ) {}
 
   async execute({ email }: IRequest): Promise<void> {
@@ -55,7 +55,7 @@ export class SendForgotPasswordMailService {
       link: `${process.env.LINK_FORGOT_MAIL_URL}${token}`,
     };
 
-    this.etherealMailProvider.sendMail(
+    this.mailProvider.sendMail(
       email,
       'Recuperação de senha',
       variables,
