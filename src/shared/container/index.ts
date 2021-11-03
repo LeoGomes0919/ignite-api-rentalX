@@ -25,6 +25,9 @@ import { IDateProvider } from './providers/DateProvider/IDateProvider';
 import { DayjsDateProvider } from './providers/DateProvider/implementations/DayjsDateProvider';
 import { IMailProvider } from './providers/MailProvider/IMailProvider';
 import { EtherealMailProvider } from './providers/MailProvider/implementations/EtherealMailProvider';
+import { IStorageProvider } from './providers/StorageProvider/IStorageProvider';
+import { LocalStorageProvider } from './providers/StorageProvider/implementations/LocalStorageProvider';
+import { S3StorageProvider } from './providers/StorageProvider/implementations/S3StorageProvider';
 
 container.registerSingleton<ICategoriesRepository>(
   'CategoriesRepository',
@@ -63,4 +66,14 @@ container.registerSingleton<IDateProvider>('DateProvider', DayjsDateProvider);
 container.registerInstance<IMailProvider>(
   'EtherealMailProvider',
   new EtherealMailProvider(),
+);
+
+const diskStorage = {
+  local: LocalStorageProvider,
+  s3: S3StorageProvider,
+};
+
+container.registerSingleton<IStorageProvider>(
+  'StorageProvider',
+  diskStorage[process.env.DISK],
 );

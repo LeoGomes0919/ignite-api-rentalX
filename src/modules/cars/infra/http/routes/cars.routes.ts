@@ -9,7 +9,7 @@ import { ListAvailableCarsController } from '../controllers/cars/ListAvailableCa
 import { UploadCarImageController } from '../controllers/cars/UploadCarImageController';
 
 const carsRoutes = Router();
-const uploadImage = multer(uploadConfig.upload('cars'));
+const uploadImage = multer(uploadConfig);
 
 const createCarController = new CreateCarsCrontoller();
 const listAvailableCarController = new ListAvailableCarsController();

@@ -7,14 +7,16 @@ import { UpdateUserAvatarController } from '../controllers/UpdateUserAvatarContr
 
 import { CreateUsersControllers } from '../controllers/CreateUsersControllers';
 import { SendForgotPasswordMailController } from '../controllers/SendForgotPasswordMailController';
+import { ProfileUserController } from '../controllers/ProfileUserController';
 
 const accountsRoutes = Router();
-const uploadAvatar = multer(uploadConfig.upload('avatar'));
+const uploadAvatar = multer(uploadConfig);
 
 const createUserController = new CreateUsersControllers();
 const updateUserAvatarController = new UpdateUserAvatarController();
 const sendForgotPasswordMailController = new SendForgotPasswordMailController();
 const resetPasswordUserController = new ResetPasswordUserController();
+const profileUserController = new ProfileUserController();
 
 accountsRoutes.post('/', createUserController.handle);
 
@@ -23,6 +25,12 @@ accountsRoutes.patch(
   ensureAuthenticated,
   uploadAvatar.single('avatar'),
   updateUserAvatarController.handle,
+);
+
+accountsRoutes.get(
+  '/profile',
+  ensureAuthenticated,
+  profileUserController.handle,
 );
 
 accountsRoutes.post(

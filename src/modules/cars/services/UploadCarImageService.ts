@@ -1,3 +1,4 @@
+import { IStorageProvider } from '@shared/container/providers/StorageProvider/IStorageProvider';
 import { AppError } from '@shared/errors/AppError';
 import { inject, injectable } from 'tsyringe';
 import { ICarsImagesRepository } from '../repositories/ICarsImagesRepository';
@@ -13,9 +14,10 @@ export class UploadCarImageSerivce {
   constructor(
     @inject('CarsImagesRepositoy')
     private carsImagesRepositoy: ICarsImagesRepository,
-
     @inject('CarsRepository')
     private carsRepository: ICarsRepository,
+    @inject('StorageProvider')
+    private storageProvider: IStorageProvider,
   ) {}
 
   async execute({ car_id, images }: IRequest): Promise<void> {
@@ -26,6 +28,7 @@ export class UploadCarImageSerivce {
     }
     images.map(async image => {
       await this.carsImagesRepositoy.create({ car_id, image });
+      await this.storageProvider.save(image, 'cars');
     });
   }
 }
