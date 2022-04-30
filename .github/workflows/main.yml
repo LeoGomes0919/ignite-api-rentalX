@@ -2,8 +2,7 @@ name: CI
 
 on:
   push:
-    branches: [ main ]
- 
+    branches: [main]
 
   workflow_dispatch:
 
@@ -18,13 +17,13 @@ jobs:
         uses: actions/setup-node@v2
         with:
           node-version: 14.x
-          
+
       - name: Install Dependences
         run: yarn
-      
+
       - name: Build
         run: yarn build
-        
+
       - uses: appleboy/scp-action@master
         with:
           host: ${{ secrets.SSH_HOST }}
@@ -33,8 +32,8 @@ jobs:
           key: ${{ secrets.SSH_KEY }}
           source: "., !node_modules"
           target: "~/app/ignite-api-rentx"
-          
-      - name: Update API  
+
+      - name: Update API
         uses: appleboy/ssh-action@master
         with:
           host: ${{ secrets.SSH_HOST }}
@@ -46,4 +45,3 @@ jobs:
             yarn
             yarn typeorm migration:run
             pm2 restart api_rentx
-            
